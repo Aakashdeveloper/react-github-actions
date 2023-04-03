@@ -6,7 +6,7 @@ const ProductDisplay = (props) => {
         return(
             <div className="col" key={item.id}>
                 <div className="card" style={{height:'400px'}}>
-                <img src={item.image} className="card-img-top" style={{height:'180px',width:'70%','marginLeft':'10%'}}/>
+                <img src={item.image} className="card-img-top" style={{height:'180px',width:'70%','marginLeft':'10%'}} alt="img"/>
                 <div className="card-body">
                     <h5 className="card-title">{item.name}</h5>
                     <p className="card-text">{item.description}</p>
