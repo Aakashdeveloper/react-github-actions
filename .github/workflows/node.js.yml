@@ -54,5 +54,5 @@ jobs:
           aws-region: us-east-1
       # Copy the files from build folder to the S3 bucket
       - name: Deploy to S3
-        run: aws s3 sync . s3://react-github-actions --acl public-read
+        run: aws s3 sync . s3://react-github-actions-aakash --acl public-read
         working-directory: react-github-actions-build
