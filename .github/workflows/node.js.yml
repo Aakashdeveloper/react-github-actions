@@ -49,10 +49,17 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: AKIAUAWJRCZERRBZUE7M
-          aws-secret-access-key: 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
+          aws-access-key-id: 
+          aws-secret-access-key: 
           aws-region: us-east-1
       # Copy the files from build folder to the S3 bucket
       - name: Deploy to S3
-        run: aws s3 sync . s3://react-github-actions-aakash --acl public-read
+        zip -r reactaction.zip app.js Dockerfile dockerignore package.json
+          S3_KEY="$AWS_VERSION_LABEL.zip"
+        run:
+        zip -r reactaction.zip app.js Dockerfile dockerignore package.json
+        aws s3 sync . s3://react-github-actions-aakash --acl public-read
         working-directory: react-github-actions-build
+
+        
+
