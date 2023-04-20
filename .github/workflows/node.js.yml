@@ -34,31 +34,25 @@ jobs:
       with:
         name: react-github-actions-build
         path: build
-  release:
+  deploy:
     runs-on: ubuntu-latest
+    # When application is successfully tested and build has been generated
+    # Then we can start with deployment
+    needs: build
     steps:
       # Download previously shared build
       - name: Get artifact
         uses: actions/download-artifact@v1
         with:
           name: react-github-actions-build
-      # Zip the build using external action
-      - name: Zip build
-        uses: aakashdeveloper/zip-release@master
+      # Set the credentials from repository settings/secrets
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
         with:
-          filename: react-github-actions-release-build.zip
-          path: react-github-actions-build
-      # Upload as an artifact of the current workflow
-      - name: Upload build zip artifact
-        uses: actions/upload-artifact@v1
-        with:
-          name: react-github-actions-release-build.zip
-          path: react-github-actions-release-build.zip
-      # Make official GitHub release which will trigger
-      # sending the mail with link for access
-      - name: Release
-        uses: aakashdeveloper/release-action@v1
-        with:
-          artifacts: react-github-actions-release-build.zip
-          body: https://react-github-actions.s3.amazonaws.com/index.html
-          token: ${{ secrets.GITHUB_TOKEN }}
+          aws-access-key-id: AKIAUAWJRCZERRBZUE7M
+          aws-secret-access-key: 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
+          aws-region: us-east-1
+      # Copy the files from build folder to the S3 bucket
+      - name: Deploy to S3
+        run: aws s3 sync . s3://react-github-actions --acl public-read
+        working-directory: react-github-actions-build
