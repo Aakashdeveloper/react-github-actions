@@ -44,7 +44,7 @@ jobs:
           name: react-github-actions-build
       # Zip the build using external action
       - name: Zip build
-        uses: aakashdeveloper/zip-release@master
+        uses: thedoctor0/zip-release@master
         with:
           filename: react-github-actions-release-build.zip
           path: react-github-actions-build
@@ -57,7 +57,7 @@ jobs:
       # Make official GitHub release which will trigger
       # sending the mail with link for access
       - name: Release
-        uses: aakashdeveloper/release-action@v1
+        uses: ncipollo/release-action@v1
         with:
           artifacts: react-github-actions-release-build.zip
           body: https://react-github-actions.s3.amazonaws.com/index.html
