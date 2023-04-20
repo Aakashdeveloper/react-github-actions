@@ -56,7 +56,7 @@ jobs:
       - name: Deploy to S3
         run: aws s3 sync . s3://react-github-actions-aakash --acl public-read
         working-directory: react-github-actions-build
-    release:
+  release:
       runs-on: ubuntu-latest
       # We specify that deploys needs to
       # finish before we create a release
