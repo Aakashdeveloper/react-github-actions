@@ -52,8 +52,11 @@ jobs:
           aws-access-key-id: ${{ secrets.AAKASH_AWS_ACCESS_KEY_ID }} 
           aws-secret-access-key: ${{ secrets.AAKASH_AWS_SECRET_ACCESS_KEY }} 
           aws-region: us-east-1
+      - name: Generate deployment package
+        run: |
+          zip -r reactaction.zip app.js Dockerfile package.json
       - name: Deploy to S3
-        run: aws s3 sync . s3://react-github-actions-aakash --acl public-read
+        run: aws s3 sync reactaction.zip s3://react-github-actions-aakash --acl public-read
         working-directory: react-github-actions-build
 
         
