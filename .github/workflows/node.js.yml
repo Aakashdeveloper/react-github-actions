@@ -56,5 +56,5 @@ jobs:
         run: |
           zip -r reactaction.zip .
       - name: Deploy to S3
-        run: aws s3 sync reactaction.zip s3://react-github-actions-aakash --acl public-read
+        run: aws s3 sync . s3://react-github-actions-aakash --acl public-read
         working-directory: react-github-actions-build
