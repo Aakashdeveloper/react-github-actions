@@ -1,3 +1,4 @@
+  # zio file
   # Copy the files from build folder to the S3 bucket
       # - name: Deploy to S3
       #   zip -r reactaction.zip app.js Dockerfile dockerignore package.json
@@ -5,4 +6,4 @@
       #   run:
       #   zip -r reactaction.zip app.js Dockerfile dockerignore package.json
       #   aws s3 sync . s3://react-github-actions-aakash --acl public-read
-      #   working-directory: react-github-actions-build
+      #   working-directory: react-github-actions-build 
