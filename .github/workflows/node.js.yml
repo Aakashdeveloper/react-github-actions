@@ -14,7 +14,7 @@ jobs:
     strategy:
       matrix:
         node-version: ['22.12.0']
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/file
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases
 
     steps:
     - uses: actions/checkout@v3
@@ -45,7 +45,7 @@ jobs:
         uses: actions/download-artifact@v1
         with:
           name: react-github-actions-build
-      # Set the credentials from repository settings/secrets values
+      # Set the credentials from repository settings/secrets
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
