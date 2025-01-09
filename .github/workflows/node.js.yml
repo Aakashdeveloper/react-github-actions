@@ -45,7 +45,7 @@ jobs:
         uses: actions/download-artifact@v1
         with:
           name: react-github-actions-build
-      # Set the credentials from repository settings/secrets code
+      # Set the credentials from repository settings/secrets
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
