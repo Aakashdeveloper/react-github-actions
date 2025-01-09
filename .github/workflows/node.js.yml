@@ -37,7 +37,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     # When application is successfully tested and build has been generated
-    # Then we can start with deployment value
+    # Then we can start with deployment value test
     needs: build
     steps:
       # Download previously shared build
